@@ -12,6 +12,8 @@ import com.pushwoosh.reactnativeplugin.R;
 import com.pushwoosh.notification.PushMessage;
 import com.pushwoosh.notification.PushwooshNotificationFactory;
 
+import android.os.Build;
+
 public class CbcNotificationFactory extends PushwooshNotificationFactory {
     private static final String LCAT = "CbcNotificationFactory";
 
@@ -44,8 +46,18 @@ public class CbcNotificationFactory extends PushwooshNotificationFactory {
             iconResId = getApplicationContext().getApplicationInfo().icon;
         }
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext())
-                .setContentText(getContentFromHtml(pushData.getMessage()))
+        NotificationCompat.Builder notificationBuilder = null;
+
+        // Android >=26 requires a notification channel
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            final String channel_id = this.addChannel(pushData);
+            notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), channel_id);
+        }
+        else {
+            notificationBuilder = new NotificationCompat.Builder(getApplicationContext());
+        }
+
+        notificationBuilder.setContentText(getContentFromHtml(pushData.getMessage()))
                 .setSmallIcon(iconResId)
                 .setTicker(getContentFromHtml(pushData.getTicker()))
                 .setWhen(System.currentTimeMillis())
