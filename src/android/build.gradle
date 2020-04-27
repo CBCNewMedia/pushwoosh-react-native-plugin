@@ -8,7 +8,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.google.gms:google-services:4.3.3'
     }
 }
 
@@ -40,7 +40,7 @@ android {
 }
 
 ext {
-    pushwoosh = "5.20.0"
+    pushwoosh = "5.22.6"
 }
 
 evaluationDependsOn(':app')
@@ -57,16 +57,11 @@ rootProject.subprojects {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    api "com.pushwoosh:pushwoosh:${pushwoosh}"
+    implementation "com.pushwoosh:pushwoosh:${pushwoosh}"
     implementation "com.pushwoosh:pushwoosh-amazon:${pushwoosh}"
     implementation "com.pushwoosh:pushwoosh-badge:${pushwoosh}"
     implementation "com.pushwoosh:pushwoosh-inbox:${pushwoosh}"
     implementation "com.pushwoosh:pushwoosh-inbox-ui:${pushwoosh}"
-    implementation "com.android.support:appcompat-v7:27.+"
-    implementation "com.android.support:recyclerview-v7:27.+"
-    api "com.android.support:design:27.+"
-    implementation "com.android.support.constraint:constraint-layout:1.0.2"
-    implementation "com.github.bumptech.glide:glide:4.7.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.60"
     implementation "com.google.firebase:firebase-core:(+,17.0.0)"
     implementation "com.google.firebase:firebase-messaging:(+,19.0.0)"

@@ -11,7 +11,6 @@
 #import "PWEventDispatcher.h"
 #import <React/RCTEventDispatcher.h>
 #import <React/RCTConvert.h>
-#import <Pushwoosh/PWInbox.h>
 
 #import <UserNotifications/UserNotifications.h>
 
@@ -177,6 +176,10 @@ RCT_EXPORT_METHOD(setApplicationIconBadgeNumber:(nonnull NSNumber*)badgeNumber) 
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIApplication sharedApplication].applicationIconBadgeNumber = [badgeNumber integerValue];
     });
+}
+
+RCT_EXPORT_METHOD(setLanguage:(NSString *)language) {
+    [PushNotificationManager pushManager].language = language;
 }
 
 RCT_EXPORT_METHOD(getApplicationIconBadgeNumber:(RCTResponseSenderBlock)callback) {
