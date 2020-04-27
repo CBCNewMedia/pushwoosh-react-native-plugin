@@ -1,6 +1,6 @@
 {
   "name": "@cbcnewmedia/pushwoosh-react-native-plugin",
-  "version": "5.20.8",
+  "version": "5.20.9",
   "description": "This plugin allows you to send and receive push notifications. Powered by Pushwoosh (www.pushwoosh.com).",
   "main": "index.js",
   "repository": {
@@ -21,11 +21,13 @@
       "sourceDir": "./src/android"
     },
     "ios": {
-      "sharedLibraries" : [ 
-        "libstdc++", 
-        "libz" 
+      "sharedLibraries": [
+        "libstdc++",
+        "libz"
       ],
-      "assets" : [ "./src/ios/PushwooshInboxBundle.bundle" ]
+      "assets": [
+        "./src/ios/PushwooshInboxBundle.bundle"
+      ]
     }
   }
 }
